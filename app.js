@@ -32,47 +32,45 @@ function playerPlay(round_num) {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection, points) {
     if (playerSelection == 'rock' && computerSelection == 'rock' || playerSelection == 'paper' && computerSelection == 'paper' || playerSelection == 'scissors' && computerSelection == 'scissors') {
         alert(`It's a draw! You both chose ${playerSelection}.`);
     }
     if (playerSelection == 'rock' && computerSelection == 'scissors' || playerSelection == 'paper' && computerSelection == 'rock' || playerSelection == 'scissors' && computerSelection == 'paper') {
         alert(`You won this round! ${playerSelection} beats ${computerSelection}.`);
-        player_points++;
+        points.player++;
     }
     if (computerSelection == 'rock' && playerSelection == 'scissors' || computerSelection == 'paper' && playerSelection == 'rock' || computerSelection == 'scissors' && playerSelection == 'paper') {
         alert(`You lost this round! ${computerSelection} beats ${playerSelection}.`);
-        computer_points++;
+        points.computer++;
     }
 }
 
-let player_points = 0;
-let computer_points = 0;
-
 function game() {
+    let points = {
+        computer: 0,
+        player: 0,
+    }
 
     for (let i = 0; i < 5; i++) {
         let playerSelection = playerPlay(i);
-        if(playerSelection == 'invalid'){
+        if (playerSelection == 'invalid') {
             i--;
             continue;
         }
         let computerSelection = computerPlay();
-        playRound(playerSelection, computerSelection);
+        playRound(playerSelection, computerSelection, points);
     }
 
-    if (player_points > computer_points) {
-        alert(`Congragulations! You won the game! You won ${player_points} times while the computer only won ${computer_points}.`);
+    if (points.player > points.computer) {
+        alert(`Congragulations! You won the game! You won ${points.player} times while the computer only won ${points.computer}.`);
     }
-    if (player_points < computer_points) {
-        alert(`Better luck next time. You lost the game! Computer won ${computer_points} times while you only won ${player_points}.`);
+    if (points.player < points.computer) {
+        alert(`Better luck next time. You lost the game! Computer won ${points.computer} times while you only won ${points.player}.`);
     }
-    if (player_points == computer_points) {
+    if (points.player == points.computer) {
         alert(`It's a draw overall! Both you and the computer scored evenly.`);
     }
-
-    player_points = 0;
-    computer_points = 0;
 }
 
 game();
