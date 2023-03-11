@@ -32,16 +32,16 @@ function playerPlay(round_num) {
     }
 }
 
-function playRound(playerSelection, computerSelection, points) {
-    if (playerSelection == 'rock' && computerSelection == 'rock' || playerSelection == 'paper' && computerSelection == 'paper' || playerSelection == 'scissors' && computerSelection == 'scissors') {
-        alert(`It's a draw! You both chose ${playerSelection}.`);
+function playRound(player_selection, computer_selection, points) {
+    if (player_selection == 'rock' && computer_selection == 'rock' || player_selection == 'paper' && computer_selection == 'paper' || player_selection == 'scissors' && computer_selection == 'scissors') {
+        alert(`It's a draw! You both chose ${player_selection}.`);
     }
-    if (playerSelection == 'rock' && computerSelection == 'scissors' || playerSelection == 'paper' && computerSelection == 'rock' || playerSelection == 'scissors' && computerSelection == 'paper') {
-        alert(`You won this round! ${playerSelection} beats ${computerSelection}.`);
+    if (player_selection == 'rock' && computer_selection == 'scissors' || player_selection == 'paper' && computer_selection == 'rock' || player_selection == 'scissors' && computer_selection == 'paper') {
+        alert(`You won this round! ${player_selection} beats ${computer_selection}.`);
         points.player++;
     }
-    if (computerSelection == 'rock' && playerSelection == 'scissors' || computerSelection == 'paper' && playerSelection == 'rock' || computerSelection == 'scissors' && playerSelection == 'paper') {
-        alert(`You lost this round! ${computerSelection} beats ${playerSelection}.`);
+    if (computer_selection == 'rock' && player_selection == 'scissors' || computer_selection == 'paper' && player_selection == 'rock' || computer_selection == 'scissors' && player_selection == 'paper') {
+        alert(`You lost this round! ${computer_selection} beats ${player_selection}.`);
         points.computer++;
     }
 }
@@ -53,13 +53,13 @@ function game() {
     }
 
     for (let i = 0; i < 5; i++) {
-        let playerSelection = playerPlay(i);
-        if (playerSelection == 'invalid') {
+        let player_selection = playerPlay(i);
+        if (player_selection == 'invalid') {
             i--;
             continue;
         }
-        let computerSelection = computerPlay();
-        playRound(playerSelection, computerSelection, points);
+        let computer_selection = computerPlay();
+        playRound(player_selection, computer_selection, points);
     }
 
     if (points.player > points.computer) {
