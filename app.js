@@ -17,13 +17,13 @@ function computerPlay() {
 function playerPlay(round_num) {
     let player_choice = prompt(`Round: ${round_num + 1} \nType rock, paper, or scissors!`);
 
-    if (player_choice.toLowerCase() == 'rock') {
+    if (player_choice.toLowerCase().trim() == 'rock') {
         alert("you chose rock!")
         return 'rock';
-    } else if (player_choice.toLowerCase() == 'paper') {
+    } else if (player_choice.toLowerCase().trim() == 'paper') {
         alert("you chose paper!")
         return 'paper';
-    } else if (player_choice.toLowerCase() == "scissors") {
+    } else if (player_choice.toLowerCase().trim() == "scissors") {
         alert("you chose scissors!")
         return 'scissors';
     } else {
