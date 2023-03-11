@@ -1,6 +1,5 @@
 function computerPlay() {
-    let computer_choice = 0;
-    computer_choice = Math.floor(Math.random() * 3);
+    let computer_choice = Math.floor(Math.random() * 3);
 
     if (computer_choice == 0) {
         alert("computer chose rock!")
@@ -16,6 +15,8 @@ function computerPlay() {
 
 function playerPlay(round_num) {
     let player_choice = prompt(`Round: ${round_num + 1} \nType rock, paper, or scissors!`);
+
+    if (player_choice === null){/*do something*/};
 
     if (player_choice.toLowerCase().trim() == 'rock') {
         alert("you chose rock!")
@@ -51,6 +52,8 @@ function game() {
         computer: 0,
         player: 0,
     }
+
+    Alert("Welcome to a very classic game")
 
     for (let i = 0; i < 5; i++) {
         let player_selection = playerPlay(i);
