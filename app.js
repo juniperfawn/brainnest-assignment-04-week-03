@@ -2,13 +2,13 @@ function computerPlay() {
     let computer_choice = Math.floor(Math.random() * 3);
 
     if (computer_choice == 0) {
-        alert("computer chose rock!")
+        alert("computer chose rock!");
         return 'rock';
     } else if (computer_choice == 1) {
-        alert("computer chose paper!")
+        alert("computer chose paper!");
         return 'paper';
     } else {
-        alert("computer chose scissors!")
+        alert("computer chose scissors!");
         return 'scissors';
     }
 }
@@ -17,7 +17,7 @@ function playerPlay(round_num) {
     let player_choice = prompt(`Round: ${round_num + 1} \nType rock, paper, or scissors!`);
 
     if (player_choice === null) {
-        alert("Sad to see you go! You have chosen to exit the game.\n----------------\nTo play again, reload this page")
+        alert("Sad to see you go! You have chosen to exit the game.\n----------------\nTo play again, reload this page");
         return 'exit';
     }
 
