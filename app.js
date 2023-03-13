@@ -16,16 +16,21 @@ function computerPlay() {
 function playerPlay(round_num) {
     let player_choice = prompt(`Round: ${round_num + 1} \nType rock, paper, or scissors!`);
 
-    if (player_choice === null){/*do something*/};
+    if (player_choice === null) {
+        alert("Sad to see you go! You have chosen to exit the game.\n----------------\nTo play again, reload this page")
+        return 'exit';
+    }
 
-    if (player_choice.toLowerCase().trim() == 'rock') {
-        alert("you chose rock!")
+    player_choice = player_choice.toLowerCase().trim();
+
+    if (player_choice == 'rock') {
+        alert("you chose rock!");
         return 'rock';
-    } else if (player_choice.toLowerCase().trim() == 'paper') {
-        alert("you chose paper!")
+    } else if (player_choice == 'paper') {
+        alert("you chose paper!");
         return 'paper';
-    } else if (player_choice.toLowerCase().trim() == "scissors") {
-        alert("you chose scissors!")
+    } else if (player_choice == "scissors") {
+        alert("you chose scissors!");
         return 'scissors';
     } else {
         alert("Invalid Input! You must make a choice only from the following: rock, paper, scissors");
@@ -48,15 +53,20 @@ function playRound(player_selection, computer_selection, points) {
 }
 
 function game() {
+    let player_exit = false;
     let points = {
         computer: 0,
         player: 0,
     }
-
-    Alert("Welcome to a very classic game")
+    
+    alert("Welcome to a very classic game; Rock, Paper, Scissors \n----------------\nLet's explain the rules: \n-You will be prompted to choose from a selection of rock, paper, or scissors \n-Type your answer and click 'okay' or press 'enter' on your keyboard \n-Once you make your choice, your opponent (the computer) will make their choice \n-Rock beats scissors, paper beats rock, scissors beats paper\n-There will be five rounds\n----------------\n-If you are ready to begin, click on 'okay' or press 'enter' on your keyboard \n-If you ever want to exit, click on 'cancel'\n----------------\nHave fun and let's begin!!");
 
     for (let i = 0; i < 5; i++) {
         let player_selection = playerPlay(i);
+        if (player_selection == 'exit') {
+            player_exit = true;
+            break;
+        }
         if (player_selection == 'invalid') {
             i--;
             continue;
@@ -65,14 +75,16 @@ function game() {
         playRound(player_selection, computer_selection, points);
     }
 
-    if (points.player > points.computer) {
-        alert(`Congragulations! You won the game! You won ${points.player} times while the computer only won ${points.computer}.`);
-    }
-    if (points.player < points.computer) {
-        alert(`Better luck next time. You lost the game! Computer won ${points.computer} times while you only won ${points.player}.`);
-    }
-    if (points.player == points.computer) {
-        alert(`It's a draw overall! Both you and the computer scored evenly.`);
+    if (!player_exit) {
+        if (points.player > points.computer) {
+            alert(`Congragulations! You won the game! You won ${points.player} times while the computer only won ${points.computer}.\n----------------\nReload this page if you'd like to play again`);
+        }
+        if (points.player < points.computer) {
+            alert(`Better luck next time. You lost the game! Computer won ${points.computer} times while you only won ${points.player}.\n----------------\nReload this page if you'd like to play again`);
+        }
+        if (points.player == points.computer) {
+            alert(`It's a draw overall! Both you and the computer scored evenly.\n----------------\nReload this page if you'd like to play again`);
+        }
     }
 }
 
